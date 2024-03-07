@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +12,11 @@ public class Main {
             ChinaCity chinaCity = new ChinaCity();
 
             System.out.print("Enter name: ");
-            chinaCity.setName(scanner.nextLine());
+            String name = scanner.nextLine();
+            if (Objects.equals(name, "exit")) {
+                break;
+            }
+            chinaCity.setName(name);
             System.out.print("Enter population: ");
             chinaCity.setPopulation(scanner.nextInt());
 
@@ -21,9 +26,9 @@ public class Main {
                 System.out.print("Validation error");
             }
 
-            for(int i = 0; i < cities.size(); i++) {
-                System.out.println(cities.get(i).getName());
-                System.out.println(cities.get(i).getPopulation());
+            for (ChinaCity city : cities) {
+                System.out.println(city.getName());
+                System.out.println(city.getPopulation());
                 System.out.println("----------");
             }
 
